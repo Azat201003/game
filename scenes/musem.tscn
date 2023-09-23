@@ -1,42 +1,42 @@
 [gd_scene load_steps=19 format=3 uid="uid://cy3wrtkwdhlkd"]
 
-[ext_resource type="Script" path="res://scenes/Player.gd" id="1_5yhl4"]
-[ext_resource type="Texture2D" uid="uid://cetoitwybcewh" path="res://textures/персонаж/sprite.png" id="1_d6ch8"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="2_o1mqi"]
-[ext_resource type="Texture2D" uid="uid://bvkbtiuu5xjxh" path="res://textures/столб.png" id="4_2xc2y"]
-[ext_resource type="Texture2D" uid="uid://csobhmrkshvus" path="res://textures/торт.png" id="5_feuqm"]
-[ext_resource type="Texture2D" uid="uid://cmi2w08ll5sx7" path="res://textures/тыква.png" id="6_n3uuf"]
+[ext_resource type="Script" path="res://scenes/Player.gd" id="1_7wpew"]
+[ext_resource type="Texture2D" uid="uid://cetoitwybcewh" path="res://textures/персонаж/sprite.png" id="2_ib6di"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_hfw8o"]
+[ext_resource type="Texture2D" uid="uid://bvkbtiuu5xjxh" path="res://textures/столб.png" id="4_4gavx"]
+[ext_resource type="Texture2D" uid="uid://csobhmrkshvus" path="res://textures/торт.png" id="5_ts4ma"]
+[ext_resource type="Texture2D" uid="uid://cmi2w08ll5sx7" path="res://textures/тыква.png" id="6_2wkll"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnh21"]
-atlas = ExtResource("1_d6ch8")
+atlas = ExtResource("2_ib6di")
 region = Rect2(0, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vduih"]
-atlas = ExtResource("1_d6ch8")
+atlas = ExtResource("2_ib6di")
 region = Rect2(13, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u2o6n"]
-atlas = ExtResource("1_d6ch8")
+atlas = ExtResource("2_ib6di")
 region = Rect2(26, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbpff"]
-atlas = ExtResource("1_d6ch8")
+atlas = ExtResource("2_ib6di")
 region = Rect2(39, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ljix"]
-atlas = ExtResource("1_d6ch8")
+atlas = ExtResource("2_ib6di")
 region = Rect2(52, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jvxm"]
-atlas = ExtResource("1_d6ch8")
+atlas = ExtResource("2_ib6di")
 region = Rect2(65, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cwjrt"]
-atlas = ExtResource("1_d6ch8")
+atlas = ExtResource("2_ib6di")
 region = Rect2(78, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1y1ti"]
-atlas = ExtResource("1_d6ch8")
+atlas = ExtResource("2_ib6di")
 region = Rect2(91, 0, 13, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2cya"]
@@ -143,33 +143,39 @@ _data = {
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="Node2D" parent="."]
-script = ExtResource("1_5yhl4")
+position = Vector2(161, 93)
+script = ExtResource("1_7wpew")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(103, 57)
 sprite_frames = SubResource("SpriteFrames_g2cya")
-animation = &"walk"
+animation = &"idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/AnimatedSprite2D"]
+speed_scale = 4.0
 libraries = {
 "": SubResource("AnimationLibrary_cfoyf")
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-161, -93)
 anchor_mode = 0
 zoom = Vector2(3.5, 3.5)
-script = ExtResource("2_o1mqi")
+position_smoothing_enabled = true
+drag_left_margin = 0.4
+drag_right_margin = 0.4
+drag_bottom_margin = 0.3
+script = ExtResource("3_hfw8o")
 
 [node name="Столб" type="Sprite2D" parent="."]
 position = Vector2(209, 56)
-texture = ExtResource("4_2xc2y")
+texture = ExtResource("4_4gavx")
 
 [node name="Торт" type="Sprite2D" parent="."]
 position = Vector2(172, 64)
-texture = ExtResource("5_feuqm")
+texture = ExtResource("5_ts4ma")
 
 [node name="Тыква" type="Sprite2D" parent="."]
 position = Vector2(305, 83)
-texture = ExtResource("6_n3uuf")
+texture = ExtResource("6_2wkll")
