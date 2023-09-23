@@ -143,23 +143,29 @@ _data = {
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="Node2D" parent="."]
+position = Vector2(161, 93)
 script = ExtResource("1_5yhl4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(103, 57)
 sprite_frames = SubResource("SpriteFrames_g2cya")
-animation = &"walk"
+animation = &"idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/AnimatedSprite2D"]
+speed_scale = 4.0
 libraries = {
 "": SubResource("AnimationLibrary_cfoyf")
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-161, -93)
 anchor_mode = 0
 zoom = Vector2(3.5, 3.5)
+position_smoothing_enabled = true
+drag_left_margin = 0.4
+drag_right_margin = 0.4
+drag_bottom_margin = 0.3
 script = ExtResource("2_o1mqi")
 
 [node name="Столб" type="Sprite2D" parent="."]
