@@ -62,7 +62,8 @@ position = Vector2(505, 264)
 scale = Vector2(7.32152, 7.32152)
 sprite_frames = SubResource("SpriteFrames_njc4g")
 animation = &"idle"
-frame = 1
+frame = 2
+frame_progress = 0.430312
 script = ExtResource("2_ufvy8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
