@@ -1,0 +1,145 @@
+[gd_scene load_steps=18 format=3 uid="uid://ofg051vrvyhn"]
+
+[ext_resource type="Script" path="res://player2.gd" id="1_jjrg8"]
+[ext_resource type="Texture2D" uid="uid://cetoitwybcewh" path="res://textures/персонаж/sprite.png" id="2_uwfup"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_ha63q"]
+[ext_resource type="Texture2D" uid="uid://cogra5xdxk5a2" path="res://textures/островок.png" id="4_mjj52"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s1jcq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnh21"]
+atlas = ExtResource("2_uwfup")
+region = Rect2(0, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vduih"]
+atlas = ExtResource("2_uwfup")
+region = Rect2(13, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2o6n"]
+atlas = ExtResource("2_uwfup")
+region = Rect2(26, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbpff"]
+atlas = ExtResource("2_uwfup")
+region = Rect2(39, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ljix"]
+atlas = ExtResource("2_uwfup")
+region = Rect2(52, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jvxm"]
+atlas = ExtResource("2_uwfup")
+region = Rect2(65, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwjrt"]
+atlas = ExtResource("2_uwfup")
+region = Rect2(78, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y1ti"]
+atlas = ExtResource("2_uwfup")
+region = Rect2(91, 0, 13, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6o4y0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnh21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vduih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2o6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbpff")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ljix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jvxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwjrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y1ti")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oija0"]
+radius = 6.95389
+height = 23.2041
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4p88r"]
+radius = 7.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fr1y3"]
+size = Vector2(56, 7)
+
+[node name="паркур" type="Node2D"]
+
+[node name="player" type="RigidBody2D" parent="."]
+position = Vector2(0, -2.28882e-05)
+physics_material_override = SubResource("PhysicsMaterial_s1jcq")
+lock_rotation = true
+script = ExtResource("1_jjrg8")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+y_sort_enabled = true
+position = Vector2(161, 93)
+scale = Vector2(1.00663, 1.0343)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player/Sprite2D"]
+y_sort_enabled = true
+texture_filter = 1
+texture_repeat = 2
+sprite_frames = SubResource("SpriteFrames_6o4y0")
+animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-1.06763, -3.18987)
+scale = Vector2(1.00663, 1.0343)
+anchor_mode = 0
+zoom = Vector2(3.5, 3.5)
+position_smoothing_enabled = true
+drag_left_margin = 0.4
+drag_right_margin = 0.4
+drag_bottom_margin = 0.3
+script = ExtResource("3_ha63q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(161, 93)
+scale = Vector2(1.00663, 1.0343)
+shape = SubResource("CapsuleShape2D_oija0")
+
+[node name="Area2D" type="Area2D" parent="player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Area2D"]
+position = Vector2(161, 99)
+shape = SubResource("CapsuleShape2D_4p88r")
+
+[node name="g" type="StaticBody2D" parent="."]
+position = Vector2(158, 124)
+
+[node name="saf" type="CollisionShape2D" parent="g"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g/saf"]
+texture = ExtResource("4_mjj52")
+
+[connection signal="area_entered" from="player/Area2D" to="player" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="player/Area2D" to="player" method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="player/Area2D" to="player" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="player/Area2D" to="player" method="_on_area_2d_body_exited"]

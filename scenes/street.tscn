@@ -123,7 +123,7 @@ y_sort_enabled = true
 scale = Vector2(1.45004, 1.45004)
 sprite_frames = SubResource("SpriteFrames_1jcn6")
 animation = &"idle"
-frame_progress = 0.266716
+frame_progress = 0.342916
 
 [node name="Player" type="Node2D" parent="Node2D"]
 position = Vector2(161, 93)
