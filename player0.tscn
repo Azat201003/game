@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://t72ivdrlrb52"]
+
+[ext_resource type="Script" path="res://scenes/Player.gd" id="1_1ohci"]
+[ext_resource type="Texture2D" uid="uid://cetoitwybcewh" path="res://textures/персонаж/sprite.png" id="2_gxukc"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_p8dje"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnh21"]
+atlas = ExtResource("2_gxukc")
+region = Rect2(0, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vduih"]
+atlas = ExtResource("2_gxukc")
+region = Rect2(13, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2o6n"]
+atlas = ExtResource("2_gxukc")
+region = Rect2(26, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbpff"]
+atlas = ExtResource("2_gxukc")
+region = Rect2(39, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ljix"]
+atlas = ExtResource("2_gxukc")
+region = Rect2(52, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jvxm"]
+atlas = ExtResource("2_gxukc")
+region = Rect2(65, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwjrt"]
+atlas = ExtResource("2_gxukc")
+region = Rect2(78, 0, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y1ti"]
+atlas = ExtResource("2_gxukc")
+region = Rect2(91, 0, 13, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5qfu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnh21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vduih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2o6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbpff")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ljix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jvxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwjrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y1ti")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
+position = Vector2(161, 93)
+scale = Vector2(1.00663, 1.0343)
+script = ExtResource("1_1ohci")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+y_sort_enabled = true
+texture_filter = 1
+texture_repeat = 2
+sprite_frames = SubResource("SpriteFrames_c5qfu")
+animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-161, -93)
+anchor_mode = 0
+zoom = Vector2(3.5, 3.5)
+position_smoothing_enabled = true
+drag_left_margin = 0.4
+drag_right_margin = 0.4
+drag_bottom_margin = 0.3
+script = ExtResource("3_p8dje")

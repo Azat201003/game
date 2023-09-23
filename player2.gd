@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var speed = 75
+var speed = 100
 @onready var _animation_player = $Sprite2D/AnimatedSprite2D
 @onready var s = $Sprite2D/AnimatedSprite2D
 
@@ -31,18 +31,18 @@ func PlayerMovement(speed, delta):
 func _physics_process(delta):
 	var jump = get_linear_velocity().y
 	if Input.is_key_pressed(KEY_SPACE) and isGround:
-		apply_central_impulse(Vector2(0, -100))
-func _process(delta):
+		apply_central_impulse(Vector2(0, -200))
 	PlayerMovement(speed, delta)
-
+func _process(delta):
+	pass
 
 
 
 func _on_area_2d_body_entered(body):
-	if body.get_name() == "g":
+	if "g" in body.get_name():
 		isGround = true
 
 
 func _on_area_2d_body_exited(body):
-	if body.get_name() == "g":
+	if "g" in body.get_name():
 		isGround = false
