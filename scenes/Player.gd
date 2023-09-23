@@ -1,13 +1,13 @@
 extends Node2D
 
 var speed = 75
-@onready var _animation_player = $AnimatedSprite2D/AnimationPlayer
-@onready var s = $AnimatedSprite2D
+@onready var _animation_player = $Sprite2D/AnimatedSprite2D
+@onready var s = $Sprite2D/AnimatedSprite2D
 
 var right = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_animation_player.play("idle")
+	pass
 
 func PlayerMovement(speed, delta):
 	if Input.is_action_pressed("moveRight"):
