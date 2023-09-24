@@ -1,41 +1,41 @@
 [gd_scene load_steps=16 format=3 uid="uid://2hjeiyykx77w"]
 
-[ext_resource type="Script" path="res://player2.gd" id="1_mqrgv"]
-[ext_resource type="Texture2D" uid="uid://cetoitwybcewh" path="res://textures/персонаж/sprite.png" id="2_w4sja"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="3_qav1c"]
+[ext_resource type="Script" path="res://scripts/player2.gd" id="1_na38t"]
+[ext_resource type="Texture2D" uid="uid://cetoitwybcewh" path="res://textures/персонаж/sprite.png" id="2_lmycw"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_ynglo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s1jcq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnh21"]
-atlas = ExtResource("2_w4sja")
+atlas = ExtResource("2_lmycw")
 region = Rect2(0, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vduih"]
-atlas = ExtResource("2_w4sja")
+atlas = ExtResource("2_lmycw")
 region = Rect2(13, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u2o6n"]
-atlas = ExtResource("2_w4sja")
+atlas = ExtResource("2_lmycw")
 region = Rect2(26, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbpff"]
-atlas = ExtResource("2_w4sja")
+atlas = ExtResource("2_lmycw")
 region = Rect2(39, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ljix"]
-atlas = ExtResource("2_w4sja")
+atlas = ExtResource("2_lmycw")
 region = Rect2(52, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jvxm"]
-atlas = ExtResource("2_w4sja")
+atlas = ExtResource("2_lmycw")
 region = Rect2(65, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cwjrt"]
-atlas = ExtResource("2_w4sja")
+atlas = ExtResource("2_lmycw")
 region = Rect2(78, 0, 13, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1y1ti"]
-atlas = ExtResource("2_w4sja")
+atlas = ExtResource("2_lmycw")
 region = Rect2(91, 0, 13, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6o4y0"]
@@ -87,7 +87,7 @@ height = 14.0
 position = Vector2(0, -2.28882e-05)
 physics_material_override = SubResource("PhysicsMaterial_s1jcq")
 lock_rotation = true
-script = ExtResource("1_mqrgv")
+script = ExtResource("1_na38t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -110,7 +110,7 @@ position_smoothing_enabled = true
 drag_left_margin = 0.4
 drag_right_margin = 0.4
 drag_bottom_margin = 0.3
-script = ExtResource("3_qav1c")
+script = ExtResource("3_ynglo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(161, 93)

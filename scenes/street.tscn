@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b1wqi13onii54"]
 
 [ext_resource type="Texture2D" uid="uid://dnlaynsxrxxpy" path="res://textures/медведь.png" id="1_nr2sb"]
-[ext_resource type="Script" path="res://animStart.gd" id="2_ufvy8"]
-[ext_resource type="PackedScene" uid="uid://t72ivdrlrb52" path="res://player0.tscn" id="3_imwc1"]
+[ext_resource type="Script" path="res://scripts/animStart.gd" id="1_stv7b"]
+[ext_resource type="PackedScene" uid="uid://t72ivdrlrb52" path="res://scenes/player0.tscn" id="3_imwc1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrgrm"]
 atlas = ExtResource("1_nr2sb")
@@ -43,7 +43,7 @@ texture_filter = 1
 texture_repeat = 2
 position = Vector2(192, 187)
 scale = Vector2(0.642, 0.642)
-script = ExtResource("2_ufvy8")
+script = ExtResource("1_stv7b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/AnimatedSprite2D"]
 visibility_layer = 2
