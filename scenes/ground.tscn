@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx0qvgaeodd5a"]
+
+[ext_resource type="Texture2D" uid="uid://cogra5xdxk5a2" path="res://textures/островок.png" id="1_a75xk"]
+
+[sub_resource type="Animation" id="Animation_yj57y"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(293, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8bjmt"]
+resource_name = "остров"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(180, -0.25, 0, 0.25, 0, 220, -0.25, 0, 0.25, 0, 285, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynwuc"]
+_data = {
+"RESET": SubResource("Animation_yj57y"),
+"остров": SubResource("Animation_8bjmt")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fr1y3"]
+size = Vector2(51, 7)
+
+[node name="ground" type="Node2D"]
+
+[node name="g10" type="AnimationPlayer" parent="."]
+root_node = NodePath("Sprite2D/g10/saf")
+libraries = {
+"": SubResource("AnimationLibrary_ynwuc")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="g10"]
+position = Vector2(293, 20)
+texture = ExtResource("1_a75xk")
+
+[node name="g10" type="StaticBody2D" parent="g10/Sprite2D"]
+position = Vector2(0.403046, -1)
+
+[node name="saf" type="CollisionShape2D" parent="g10/Sprite2D/g10"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")

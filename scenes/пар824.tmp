@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ofg051vrvyhn"]
+[gd_scene load_steps=12 format=3 uid="uid://ofg051vrvyhn"]
 
 [ext_resource type="PackedScene" uid="uid://2hjeiyykx77w" path="res://scenes/player.tscn" id="1_ulkwi"]
-[ext_resource type="Script" path="res://scripts/animStart.gd" id="2_vm1dk"]
+[ext_resource type="Script" path="res://animStart.gd" id="2_uvdao"]
 [ext_resource type="Texture2D" uid="uid://cogra5xdxk5a2" path="res://textures/островок.png" id="4_mjj52"]
-[ext_resource type="Script" path="res://scripts/die.gd" id="4_yvsrb"]
-[ext_resource type="Script" path="res://scripts/end.gd" id="5_cc421"]
+[ext_resource type="Script" path="res://die.gd" id="5_04j21"]
 
 [sub_resource type="Animation" id="Animation_yj57y"]
 length = 0.001
@@ -52,7 +51,7 @@ size = Vector2(51, 7)
 size = Vector2(2778, 572)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fq61"]
-size = Vector2(42, 123)
+size = Vector2(20, 76)
 
 [node name="паркур" type="Node2D"]
 
@@ -60,7 +59,7 @@ size = Vector2(42, 123)
 
 [node name="ground4" type="Node2D" parent="."]
 position = Vector2(-14, -116)
-script = ExtResource("2_vm1dk")
+script = ExtResource("2_uvdao")
 
 [node name="g10" type="AnimationPlayer" parent="ground4"]
 root_node = NodePath("Sprite2D/g10/saf")
@@ -82,7 +81,7 @@ shape = SubResource("RectangleShape2D_fr1y3")
 
 [node name="ground3" type="Node2D" parent="."]
 position = Vector2(294, -111)
-script = ExtResource("2_vm1dk")
+script = ExtResource("2_uvdao")
 
 [node name="g10" type="AnimationPlayer" parent="ground3"]
 root_node = NodePath("Sprite2D/g10/saf")
@@ -104,7 +103,7 @@ shape = SubResource("RectangleShape2D_fr1y3")
 
 [node name="ground2" type="Node2D" parent="."]
 position = Vector2(294, -111)
-script = ExtResource("2_vm1dk")
+script = ExtResource("2_uvdao")
 
 [node name="g10" type="AnimationPlayer" parent="ground2"]
 root_node = NodePath("Sprite2D/g10/saf")
@@ -126,7 +125,7 @@ shape = SubResource("RectangleShape2D_fr1y3")
 
 [node name="ground" type="Node2D" parent="."]
 position = Vector2(-7, -58)
-script = ExtResource("2_vm1dk")
+script = ExtResource("2_uvdao")
 
 [node name="g10" type="AnimationPlayer" parent="ground"]
 root_node = NodePath("Sprite2D/g10/saf")
@@ -137,10 +136,10 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="ground/g10"]
 position = Vector2(293, -301)
 texture = ExtResource("4_mjj52")
-offset = Vector2(99.815, 30.455)
+offset = Vector2(99.815, 0)
 
 [node name="g10" type="StaticBody2D" parent="ground/g10/Sprite2D"]
-position = Vector2(95.8785, 33)
+position = Vector2(95.8785, 0)
 
 [node name="saf" type="CollisionShape2D" parent="ground/g10/Sprite2D/g10"]
 position = Vector2(3.00002, -1)
@@ -208,7 +207,7 @@ texture = ExtResource("4_mjj52")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(178, 401)
-script = ExtResource("4_yvsrb")
+script = ExtResource("5_04j21")
 
 [node name="Area2D" type="Area2D" parent="StaticBody2D"]
 
@@ -217,13 +216,11 @@ position = Vector2(-25, 46)
 shape = SubResource("RectangleShape2D_h0tsw")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-script = ExtResource("5_cc421")
 
 [node name="Area2D" type="Area2D" parent="StaticBody2D2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/Area2D"]
-position = Vector2(451, -338)
+position = Vector2(381, -357)
 shape = SubResource("RectangleShape2D_4fq61")
 
 [connection signal="body_entered" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="StaticBody2D2/Area2D" to="StaticBody2D2" method="_on_area_2d_body_entered"]
