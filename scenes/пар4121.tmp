@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://ofg051vrvyhn"]
+
+[ext_resource type="PackedScene" uid="uid://2hjeiyykx77w" path="res://player.tscn" id="1_ulkwi"]
+[ext_resource type="Texture2D" uid="uid://cogra5xdxk5a2" path="res://textures/островок.png" id="4_mjj52"]
+[ext_resource type="Script" path="res://die.gd" id="5_04j21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fr1y3"]
+size = Vector2(51, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0tsw"]
+size = Vector2(2778, 572)
+
+[node name="паркур" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_ulkwi")]
+
+[node name="g10" type="StaticBody2D" parent="."]
+position = Vector2(299, -313)
+
+[node name="saf" type="CollisionShape2D" parent="g10"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g10/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g9" type="StaticBody2D" parent="."]
+position = Vector2(182, -259)
+
+[node name="saf" type="CollisionShape2D" parent="g9"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g9/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g8" type="StaticBody2D" parent="."]
+position = Vector2(284, -205)
+
+[node name="saf" type="CollisionShape2D" parent="g8"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g8/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g7" type="StaticBody2D" parent="."]
+position = Vector2(220, -145)
+
+[node name="saf" type="CollisionShape2D" parent="g7"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g7/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g6" type="StaticBody2D" parent="."]
+position = Vector2(100, -127)
+
+[node name="saf" type="CollisionShape2D" parent="g6"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g6/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g5" type="StaticBody2D" parent="."]
+position = Vector2(37, -78)
+
+[node name="saf" type="CollisionShape2D" parent="g5"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g5/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g4" type="StaticBody2D" parent="."]
+position = Vector2(124, -11)
+
+[node name="saf" type="CollisionShape2D" parent="g4"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g4/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g3" type="StaticBody2D" parent="."]
+position = Vector2(201, 45)
+
+[node name="saf" type="CollisionShape2D" parent="g3"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g3/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g2" type="StaticBody2D" parent="."]
+position = Vector2(243, 98)
+
+[node name="saf" type="CollisionShape2D" parent="g2"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g2/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="g" type="StaticBody2D" parent="."]
+position = Vector2(158, 124)
+
+[node name="saf" type="CollisionShape2D" parent="g"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fr1y3")
+
+[node name="Островок" type="Sprite2D" parent="g/saf"]
+texture = ExtResource("4_mjj52")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(178, 401)
+script = ExtResource("5_04j21")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+position = Vector2(-25, 46)
+shape = SubResource("RectangleShape2D_h0tsw")
+
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_area_2d_body_entered"]
