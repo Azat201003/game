@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crgdgqi12s38q"
-path="res://.godot/imported/первая сцена.png-fea5c0a8988ff31ab7f51dd77dbcd1c1.ctex"
+uid="uid://br0cbxx7as0jy"
+path="res://.godot/imported/фон_паркура.png-de14ccbaa225aa6d246fae8ec3ac034b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/первая сцена.png"
-dest_files=["res://.godot/imported/первая сцена.png-fea5c0a8988ff31ab7f51dd77dbcd1c1.ctex"]
+source_file="res://textures/фон_паркура.png"
+dest_files=["res://.godot/imported/фон_паркура.png-de14ccbaa225aa6d246fae8ec3ac034b.ctex"]
 
 [params]
 
