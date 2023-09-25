@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1wqi13onii54"]
+[gd_scene load_steps=11 format=3 uid="uid://b1wqi13onii54"]
 
 [ext_resource type="Texture2D" uid="uid://dnlaynsxrxxpy" path="res://textures/медведь.png" id="1_nr2sb"]
 [ext_resource type="Script" path="res://scripts/animStart.gd" id="1_stv7b"]
 [ext_resource type="PackedScene" uid="uid://t72ivdrlrb52" path="res://scenes/player0.tscn" id="3_imwc1"]
+[ext_resource type="Texture2D" uid="uid://beavlcjge7t16" path="res://textures/кнопка_е.png" id="3_u2rmp"]
+[ext_resource type="Script" path="res://press_e.gd" id="4_eag66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd0bl"]
+size = Vector2(77.8816, 42.0561)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrgrm"]
 atlas = ExtResource("1_nr2sb")
@@ -35,17 +40,28 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="y-sort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="Node2D"]
+[node name="AnimatedSprite2D" type="Sprite2D" parent="y-sort"]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(192, 187)
 scale = Vector2(0.642, 0.642)
 script = ExtResource("1_stv7b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/AnimatedSprite2D"]
+[node name="Area2D" type="Area2D" parent="y-sort/AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="y-sort/AnimatedSprite2D/Area2D"]
+position = Vector2(1.55768, 33.4891)
+shape = SubResource("RectangleShape2D_jd0bl")
+
+[node name="КнопкаЕ" type="Sprite2D" parent="y-sort/AnimatedSprite2D"]
+position = Vector2(-18.6916, -9.34579)
+scale = Vector2(0.48676, 0.48676)
+texture = ExtResource("3_u2rmp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="y-sort/AnimatedSprite2D"]
 visibility_layer = 2
 y_sort_enabled = true
 scale = Vector2(1.45004, 1.45004)
@@ -53,4 +69,9 @@ sprite_frames = SubResource("SpriteFrames_1jcn6")
 animation = &"idle"
 frame_progress = 0.342916
 
-[node name="Player" parent="Node2D" instance=ExtResource("3_imwc1")]
+[node name="StaticBody2D" type="StaticBody2D" parent="y-sort/AnimatedSprite2D"]
+script = ExtResource("4_eag66")
+
+[node name="Player" parent="y-sort" instance=ExtResource("3_imwc1")]
+
+[connection signal="body_entered" from="y-sort/AnimatedSprite2D/Area2D" to="y-sort/AnimatedSprite2D/StaticBody2D" method="_on_area_2d_body_entered"]

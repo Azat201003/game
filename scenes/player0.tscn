@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://t72ivdrlrb52"]
+[gd_scene load_steps=14 format=3 uid="uid://t72ivdrlrb52"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_1ohci"]
 [ext_resource type="Texture2D" uid="uid://cetoitwybcewh" path="res://textures/персонаж/sprite.png" id="2_gxukc"]
@@ -73,6 +73,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yv8hk"]
+radius = 6.95389
+height = 23.2041
+
 [node name="Player" type="Node2D"]
 position = Vector2(161, 93)
 scale = Vector2(1.00663, 1.0343)
@@ -87,6 +91,14 @@ texture_filter = 1
 texture_repeat = 2
 sprite_frames = SubResource("SpriteFrames_c5qfu")
 animation = &"idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D/AnimatedSprite2D"]
+
+[node name="Area2D" type="Area2D" parent="Sprite2D/AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AnimatedSprite2D/Area2D"]
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_yv8hk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-161, -93)
