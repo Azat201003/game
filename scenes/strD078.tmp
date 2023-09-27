@@ -1,12 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1wqi13onii54"]
+[gd_scene load_steps=10 format=3 uid="uid://b1wqi13onii54"]
 
 [ext_resource type="Texture2D" uid="uid://dnlaynsxrxxpy" path="res://textures/медведь.png" id="1_nr2sb"]
 [ext_resource type="Script" path="res://scripts/animStart.gd" id="1_stv7b"]
 [ext_resource type="PackedScene" uid="uid://t72ivdrlrb52" path="res://scenes/player0.tscn" id="3_imwc1"]
 [ext_resource type="Script" path="res://press_e.gd" id="4_eag66"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka2bb"]
-size = Vector2(43.6137, 115.265)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrgrm"]
 atlas = ExtResource("1_nr2sb")
@@ -44,14 +41,6 @@ size = Vector2(56.8536, 31.1526)
 
 [node name="y-sort" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="door_to_musem" type="StaticBody2D" parent="y-sort"]
-position = Vector2(192, 187)
-scale = Vector2(0.642, 0.642)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="y-sort/door_to_musem"]
-position = Vector2(208.723, -141.745)
-shape = SubResource("RectangleShape2D_ka2bb")
 
 [node name="bear" type="Sprite2D" parent="y-sort"]
 texture_filter = 1
