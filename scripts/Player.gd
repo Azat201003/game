@@ -85,6 +85,11 @@ func PlayerMovement(speed, delta):
 				get_parent().get_node("CanvasLayer/TextureRect").visible = true
 				isOpen = true
 				last = true
+	
+	if Input.is_action_just_released("esc"):
+		get_parent().get_parent().get_node("CanvasLayer/menu").visible = true
+		
+		get_tree().paused = true
 			
 				
 

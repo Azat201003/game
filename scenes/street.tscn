@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1wqi13onii54"]
+[gd_scene load_steps=17 format=3 uid="uid://b1wqi13onii54"]
 
 [ext_resource type="Texture2D" uid="uid://dnlaynsxrxxpy" path="res://textures/медведь.png" id="1_nr2sb"]
 [ext_resource type="Script" path="res://scripts/animStart.gd" id="1_stv7b"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://b8ytcrcf5unmr" path="res://ofont.ru_Bad Comic.ttf" id="5_gjbsm"]
 [ext_resource type="Texture2D" uid="uid://s6dcww4kk6ta" path="res://textures/диалоговое_окно.png" id="6_5i7wc"]
 [ext_resource type="Texture2D" uid="uid://cecxk6hbikw1t" path="res://textures/дверь.png" id="7_tj7ee"]
+[ext_resource type="PackedScene" uid="uid://cuow1rmg4m25y" path="res://scenes/menu.tscn" id="8_x88e4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka2bb"]
 size = Vector2(43.6137, 52.96)
@@ -125,6 +126,9 @@ text = "dsfsfdsa"
 label_settings = SubResource("LabelSettings_qp4cr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="menu" parent="CanvasLayer" instance=ExtResource("8_x88e4")]
+visible = false
 
 [node name="Дверь" type="Sprite2D" parent="."]
 position = Vector2(324, 92)
