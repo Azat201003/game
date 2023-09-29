@@ -1,8 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://t72ivdrlrb52"]
+[gd_scene load_steps=17 format=3 uid="uid://t72ivdrlrb52"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_1ohci"]
 [ext_resource type="Texture2D" uid="uid://cetoitwybcewh" path="res://textures/персонаж/sprite.png" id="2_gxukc"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_p8dje"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7bvrr"]
+radius = 3.86735
+height = 9.66837
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_27k6i"]
 atlas = ExtResource("2_gxukc")
@@ -96,24 +100,34 @@ position = Vector2(161, 93)
 scale = Vector2(1.00663, 1.0343)
 script = ExtResource("1_1ohci")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="player" type="RigidBody2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(0, 7.7347)
+shape = SubResource("CapsuleShape2D_7bvrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
 y_sort_enabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player/Sprite2D"]
 y_sort_enabled = true
 texture_filter = 1
 texture_repeat = 2
 sprite_frames = SubResource("SpriteFrames_c5qfu")
 animation = &"idle"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D/AnimatedSprite2D"]
+[node name="Area2D" type="Area2D" parent="player/Sprite2D/AnimatedSprite2D"]
 
-[node name="Area2D" type="Area2D" parent="Sprite2D/AnimatedSprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AnimatedSprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Sprite2D/AnimatedSprite2D/Area2D"]
+visible = false
 shape = SubResource("CapsuleShape2D_yv8hk")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(-161, -93)
 anchor_mode = 0
 zoom = Vector2(3.5, 3.5)
@@ -123,5 +137,7 @@ drag_right_margin = 0.4
 drag_bottom_margin = 0.3
 script = ExtResource("3_p8dje")
 
-[connection signal="body_entered" from="Sprite2D/AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Sprite2D/AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="player/Sprite2D/AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="player/Sprite2D/AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="player/Sprite2D/AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="player/Sprite2D/AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_exited"]

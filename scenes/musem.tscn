@@ -1,11 +1,95 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy3wrtkwdhlkd"]
+[gd_scene load_steps=18 format=3 uid="uid://cy3wrtkwdhlkd"]
 
 [ext_resource type="PackedScene" uid="uid://t72ivdrlrb52" path="res://scenes/player0.tscn" id="1_u8aqb"]
 [ext_resource type="Texture2D" uid="uid://bvkbtiuu5xjxh" path="res://textures/столб.png" id="4_4gavx"]
+[ext_resource type="Texture2D" uid="uid://bl3k4yoq6r8a6" path="res://textures/люк.png" id="4_dkyih"]
+[ext_resource type="Texture2D" uid="uid://3keiixd3ry44" path="res://textures/бумажка.png" id="5_e4rgt"]
 [ext_resource type="Texture2D" uid="uid://cmi2w08ll5sx7" path="res://textures/тыква.png" id="6_2wkll"]
+[ext_resource type="Texture2D" uid="uid://cdkusqrhrm7x4" path="res://textures/надпись.png" id="6_ceemb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocf6s"]
+size = Vector2(21, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0jq7"]
+size = Vector2(51.176, 51.4019)
+
+[sub_resource type="Animation" id="Animation_y7ghj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(266, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_y3uyo"]
+resource_name = "door_of_floor"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(266, -0.25, 0, 0.25, 0, 275, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.3, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gifnh"]
+_data = {
+"RESET": SubResource("Animation_y7ghj"),
+"door_of_floor": SubResource("Animation_y3uyo")
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hhu6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcadx"]
+size = Vector2(15, 169.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7m6i"]
+size = Vector2(252, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of85g"]
+size = Vector2(20, 188)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnlo4"]
+size = Vector2(296, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7pwi"]
+size = Vector2(40, 28)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
+metadata/_edit_horizontal_guides_ = [-71.0]
 
 [node name="Player" parent="." instance=ExtResource("1_u8aqb")]
 
@@ -18,5 +102,93 @@ position = Vector2(209, 56)
 texture = ExtResource("4_4gavx")
 
 [node name="Тыква" type="Sprite2D" parent="."]
-position = Vector2(204, 122)
+position = Vector2(243, 117)
 texture = ExtResource("6_2wkll")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Тыква"]
+
+[node name="hghj" type="CollisionShape2D" parent="Тыква/StaticBody2D"]
+position = Vector2(0, 6.25)
+shape = SubResource("RectangleShape2D_ocf6s")
+debug_color = Color(0, 0.6, 0.701961, 0.0941176)
+
+[node name="Люк" type="Sprite2D" parent="."]
+position = Vector2(266, 59)
+scale = Vector2(0.3, 1)
+texture = ExtResource("4_dkyih")
+
+[node name="door_to_parkur" type="StaticBody2D" parent="Люк"]
+position = Vector2(-153, 90)
+scale = Vector2(0.642, 0.642)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Люк/door_to_parkur"]
+position = Vector2(238.318, -140.966)
+shape = SubResource("RectangleShape2D_u0jq7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Люк"]
+libraries = {
+"": SubResource("AnimationLibrary_gifnh")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_hhu6p")
+
+[node name="x" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(59, 102.875)
+shape = SubResource("RectangleShape2D_lcadx")
+debug_color = Color(0, 0.6, 0.701961, 0.0941176)
+
+[node name="y" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(176, 12)
+shape = SubResource("RectangleShape2D_r7m6i")
+debug_color = Color(0, 0.6, 0.701961, 0.0941176)
+
+[node name="width" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(309, 92)
+shape = SubResource("RectangleShape2D_of85g")
+debug_color = Color(0, 0.6, 0.701961, 0.0941176)
+
+[node name="height" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(188, 196)
+shape = SubResource("RectangleShape2D_nnlo4")
+debug_color = Color(0, 0.6, 0.701961, 0.0941176)
+
+[node name="Бумажка" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(213, 77)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e4rgt")
+
+[node name="бумажка" type="Area2D" parent="Бумажка"]
+collision_layer = 7
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Бумажка/бумажка"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_q7pwi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 41.0
+offset_top = 32.0
+offset_right = 81.0
+offset_bottom = 72.0
+scale = Vector2(26.2372, 14.2103)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_ceemb")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 787.0
+offset_top = 511.0
+offset_right = 1106.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 25
+text = "press \"e\" for use/remove"

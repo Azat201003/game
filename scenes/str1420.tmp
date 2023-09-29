@@ -1,15 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1wqi13onii54"]
+[gd_scene load_steps=12 format=3 uid="uid://b1wqi13onii54"]
 
 [ext_resource type="Texture2D" uid="uid://dnlaynsxrxxpy" path="res://textures/медведь.png" id="1_nr2sb"]
 [ext_resource type="Script" path="res://scripts/animStart.gd" id="1_stv7b"]
 [ext_resource type="PackedScene" uid="uid://t72ivdrlrb52" path="res://scenes/player0.tscn" id="3_imwc1"]
-[ext_resource type="Script" path="res://scripts/press_e.gd" id="3_mve7q"]
+[ext_resource type="Script" path="res://press_e.gd" id="4_eag66"]
 [ext_resource type="FontFile" uid="uid://b8ytcrcf5unmr" path="res://ofont.ru_Bad Comic.ttf" id="5_gjbsm"]
-[ext_resource type="Texture2D" uid="uid://s6dcww4kk6ta" path="res://textures/диалоговое_окно.png" id="6_5i7wc"]
-[ext_resource type="Texture2D" uid="uid://cecxk6hbikw1t" path="res://textures/дверь.png" id="7_tj7ee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ka2bb"]
-size = Vector2(43.6137, 52.96)
+size = Vector2(43.6137, 115.265)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrgrm"]
 atlas = ExtResource("1_nr2sb")
@@ -43,14 +41,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3hkf"]
 size = Vector2(56.8536, 31.1526)
 
-[sub_resource type="Theme" id="Theme_ywa65"]
-default_font = ExtResource("5_gjbsm")
-
-[sub_resource type="LabelSettings" id="LabelSettings_qp4cr"]
-font = ExtResource("5_gjbsm")
-font_size = 40
-font_color = Color(0, 0, 0, 1)
-
 [node name="Node2D" type="Node2D"]
 
 [node name="y-sort" type="Node2D" parent="."]
@@ -61,7 +51,7 @@ position = Vector2(192, 187)
 scale = Vector2(0.642, 0.642)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y-sort/door_to_musem"]
-position = Vector2(208.723, -147.975)
+position = Vector2(208.723, -141.745)
 shape = SubResource("RectangleShape2D_ka2bb")
 
 [node name="bear" type="Sprite2D" parent="y-sort"]
@@ -80,11 +70,9 @@ animation = &"idle"
 frame_progress = 0.342916
 
 [node name="StaticBody2D" type="StaticBody2D" parent="y-sort/bear"]
-script = ExtResource("3_mve7q")
+script = ExtResource("4_eag66")
 
-[node name="bear" type="Area2D" parent="y-sort/bear"]
-collision_layer = 7
-collision_mask = 0
+[node name="bear" type="StaticBody2D" parent="y-sort/bear"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="y-sort/bear/bear"]
 position = Vector2(0, 32.7103)
@@ -96,36 +84,14 @@ shape = SubResource("RectangleShape2D_r3hkf")
 layer = 2
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
-offset_left = 787.0
-offset_top = 511.0
-offset_right = 1106.0
-offset_bottom = 602.0
+offset_left = 865.0
+offset_top = 523.0
+offset_right = 1105.0
+offset_bottom = 614.0
 theme_override_font_sizes/font_size = 25
-text = "press \"e\" for talk/continue"
+text = "press \"e\" for talk"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-visible = false
-offset_right = 1152.0
-offset_bottom = 160.0
-texture = ExtResource("6_5i7wc")
-
-[node name="chat" type="Label" parent="CanvasLayer/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-theme = SubResource("Theme_ywa65")
+[node name="chat" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_gjbsm")
-theme_override_font_sizes/font_size = 40
-text = "dsfsfdsa"
-label_settings = SubResource("LabelSettings_qp4cr")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Дверь" type="Sprite2D" parent="."]
-position = Vector2(324, 92)
-texture = ExtResource("7_tj7ee")

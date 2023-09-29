@@ -7,5 +7,5 @@ func _ready():
 	if _animation_player != null:
 		_animation_player.play("idle")
 	else:
-		await get_tree().create_timer(randi() % 10, false, false, true).timeout
+		await get_tree().create_timer(randi() % 20 / 10, false, false, true).timeout
 		$g10.play("idle")
