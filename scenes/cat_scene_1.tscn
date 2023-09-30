@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgi1r2nymc7ia"]
+
+[ext_resource type="Script" path="res://scripts/cat_scenes.gd" id="1_tag1d"]
+[ext_resource type="Texture2D" uid="uid://5fsxx22ngwhq" path="res://cutscenes/beginning/beginning1.png" id="2_ylsjm"]
+
+[node name="кат сцена" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tag1d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_ylsjm")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1004.0
+offset_top = 614.0
+offset_right = 1143.0
+offset_bottom = 640.0
+text = "press e to continu"

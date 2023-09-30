@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuow1rmg4m25y"]
 
-[ext_resource type="FontFile" uid="uid://b8ytcrcf5unmr" path="res://ofont.ru_Bad Comic.ttf" id="1_ka3kt"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_lwpcf"]
 [ext_resource type="Texture2D" uid="uid://s6dcww4kk6ta" path="res://textures/диалоговое_окно.png" id="2_4wqxi"]
+[ext_resource type="FontFile" uid="uid://b8ytcrcf5unmr" path="res://fonts/ofont.ru_Bad Comic.ttf" id="2_tjmbl"]
 
 [sub_resource type="Theme" id="Theme_gunml"]
 
@@ -36,7 +36,7 @@ theme_override_colors/icon_hover_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_focus_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_disabled_color = Color(0.301961, 0.172549, 0.0901961, 1)
-theme_override_fonts/font = ExtResource("1_ka3kt")
+theme_override_fonts/font = ExtResource("2_tjmbl")
 theme_override_font_sizes/font_size = 48
 text = "play"
 icon = ExtResource("2_4wqxi")
@@ -63,7 +63,7 @@ theme_override_colors/icon_hover_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_focus_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_disabled_color = Color(0.301961, 0.172549, 0.0901961, 1)
-theme_override_fonts/font = ExtResource("1_ka3kt")
+theme_override_fonts/font = ExtResource("2_tjmbl")
 theme_override_font_sizes/font_size = 48
 text = "setting"
 icon = ExtResource("2_4wqxi")
@@ -90,7 +90,7 @@ theme_override_colors/icon_hover_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_focus_color = Color(0.301961, 0.172549, 0.0901961, 1)
 theme_override_colors/icon_disabled_color = Color(0.301961, 0.172549, 0.0901961, 1)
-theme_override_fonts/font = ExtResource("1_ka3kt")
+theme_override_fonts/font = ExtResource("2_tjmbl")
 theme_override_font_sizes/font_size = 48
 text = "quit"
 icon = ExtResource("2_4wqxi")

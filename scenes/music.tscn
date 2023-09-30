@@ -1,12 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5yfnwb63veiv"]
 
-[ext_resource type="Script" path="res://scenes/background.gd" id="1_2vjsv"]
 [ext_resource type="AudioStream" uid="uid://cuxecegi3x4eq" path="res://sounds/музыка2.mp3" id="1_lw1xi"]
 
+[sub_resource type="GDScript" id="GDScript_3mx3o"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# get_node(\"menu\").visible = false
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass"
+
 [node name="music" type="Node2D"]
-script = ExtResource("1_2vjsv")
+script = SubResource("GDScript_3mx3o")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_lw1xi")
-pitch_scale = 1.01
 autoplay = true

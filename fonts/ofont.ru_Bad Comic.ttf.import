@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b8ytcrcf5unmr"
-path="res://.godot/imported/ofont.ru_Bad Comic.ttf-fb74af68e309a7494f8448c29bcc0307.fontdata"
+path="res://.godot/imported/ofont.ru_Bad Comic.ttf-0beed6d3b40f72f7f52d393bc1b7285b.fontdata"
 
 [deps]
 
-source_file="res://ofont.ru_Bad Comic.ttf"
-dest_files=["res://.godot/imported/ofont.ru_Bad Comic.ttf-fb74af68e309a7494f8448c29bcc0307.fontdata"]
+source_file="res://fonts/ofont.ru_Bad Comic.ttf"
+dest_files=["res://.godot/imported/ofont.ru_Bad Comic.ttf-0beed6d3b40f72f7f52d393bc1b7285b.fontdata"]
 
 [params]
 

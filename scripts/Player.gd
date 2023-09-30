@@ -7,7 +7,7 @@ var phrases = ["hello have you seen anyone this night?", "have you seen anyone s
 var phrases2 = ["No I went to bed early today", "yes there were a few raccoons running through here", "Yes I saw two raccoons rummaging through trash cans"]
 var tOrF = [false, true, true]
 var numText = 0
-var rand
+var rand = 0
 var end = false
 var end2 = false
 
@@ -60,18 +60,19 @@ func PlayerMovement(speed, delta):
 	position.y += speed * delta * pos_y
 		
 	if Input.is_action_just_pressed("pressE"):
-		if radius:
-			var jk = get_parent().get_parent().get_node("CanvasLayer/TextureRect")
-			if numText == 0:
-				rand = randi() % 3 - 1
+		var jk = get_parent().get_parent().get_node("CanvasLayer/TextureRect")
+		if numText == 0:
+			if radius:
 				jk.get_node("chat").text = phrases[rand]
 				jk.visible = true
-				if end2:
-					jk.visible = false
-					end2 = false
-				else:
-					numText += 1
+			if end2:
+				jk.visible = false
+				end2 = false
 			else:
+				if radius:
+					numText += 1
+		else:
+			if radius:
 				numText = 0
 				jk.get_node("chat").text = phrases2[rand]
 				end2 = true
@@ -98,11 +99,6 @@ func _physics_process(delta):
 	PlayerMovement(speed, delta)
 
 
-func _on_area_2d_body_exited(body):
-	if body.get_name() == "bear":
-		radius = false
-
-
 func _on_area_2d_body_entered(body):
 	if body.get_name() == "door_to_musem":
 		if end == true:
@@ -115,6 +111,15 @@ func _on_area_2d_area_entered(area):
 	if area.get_name() == "bear":
 		radius = true
 		get_parent().get_parent().get_node("CanvasLayer/Label").visible = true
+		rand = 0
+	if area.get_name() == "bear2":
+		radius = true
+		get_parent().get_parent().get_node("CanvasLayer/Label").visible = true
+		rand = 1
+	if area.get_name() == "bear3":
+		radius = true
+		get_parent().get_parent().get_node("CanvasLayer/Label").visible = true
+		rand = 2
 	if area.get_name() == "бумажка":
 		radius_paper = true
 		get_parent().get_node("CanvasLayer/Label").visible = true
@@ -122,6 +127,12 @@ func _on_area_2d_area_entered(area):
 
 func _on_area_2d_area_exited(area):
 	if area.get_name() == "bear":
+		radius = false
+		get_parent().get_parent().get_node("CanvasLayer/Label").visible = false
+	if area.get_name() == "bear2":
+		radius = false
+		get_parent().get_parent().get_node("CanvasLayer/Label").visible = false
+	if area.get_name() == "bear3":
 		radius = false
 		get_parent().get_parent().get_node("CanvasLayer/Label").visible = false
 	if area.get_name() == "бумажка":
